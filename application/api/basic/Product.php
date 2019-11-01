@@ -10,6 +10,10 @@ class Product extends Core_Controller
     public function __construct()
     {
         parent::__construct();
+
+        # 权限鉴定
+        $this->authorization();
+
     }
 
     /**

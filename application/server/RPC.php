@@ -24,6 +24,7 @@ class RPC extends Core_Controller
             $request = self::post('request');
 
             $result = $this->RPC->request($request)->exec();
+
             $result = isset($result['return_code']) ? $result : successMsg('RPC Request success!', $result);
             $this->displayJson($result);
         }

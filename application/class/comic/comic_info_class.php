@@ -273,6 +273,7 @@ class comic_info_class
         {
             $isReadChapter = $this->load->server('comic_order_class', 'order', SITE_USERS); # RPC 远端服务
             $paymentAllow  = $isReadChapter->isComicReadPaymentAllow($usersId, $comicId, $chapterId)->result('result');
+
             $currChapterAllow = in_array($chapterId, $paymentAllow['users_pay_chapter']);
         }
 

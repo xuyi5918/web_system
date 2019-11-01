@@ -26,11 +26,8 @@ class Core_Controller extends CI_Controller
         static::$request = $this->input;
 
         # 是否开启线上debug模式
-        $isDebug = self::get('is_debug', 1, 'boolval');
-        $this->isDebug($isDebug);
-
-        # 权限鉴定
-        $this->authorization($project = config_item('project'));
+        $isDebug = self::get('is_debug', 0, 'boolval');
+        $this->isDebugRunLog($isDebug);
     }
 
     /**
@@ -39,12 +36,8 @@ class Core_Controller extends CI_Controller
      * @author xuyi
      * @date 2019/10/31
      */
-    public function authorization($project = 'api')
+    public function authorization()
     {
-        if($project !== 'api') {
-            return successMsg('不需要权限验证');
-        }
-
         $platform    = self::get('platform', 'pc', 'trim');
         $requestTime = self::get('request_time', 0, 'intval');
         $version     = self::get('version', '1.02', 'trim');
@@ -71,12 +64,13 @@ class Core_Controller extends CI_Controller
      * @author xuyi
      * @date 2019/10/31
      */
-    public function isDebug($isDebug = TRUE)
+    public function isDebugRunLog($isDebug = TRUE)
     {
         if($isDebug == TRUE) {
-            self::$traceLog  = self::classes('TRACE_info', 'drive'); # 页面运行信息&错误记录
-            $this->output->enable_profiler(1);
+           $this->output->enable_profiler(1);
         }
+
+        self::$traceLog  = self::classes('TRACE_info', 'drive'); # 页面运行信息&错误记录
     }
 
     /**
@@ -342,7 +336,7 @@ class Core_Controller extends CI_Controller
         $footer = config('config','theme_views_footer');
         $footerView = trim($this->viewConf['footer']);
         $footer = isset($this->viewConf['footer']) && ! empty($footerView) ? $this->viewConf['footer'] : $footer;
-        $footer = $themes . $layouts . '/' . $footer;
+        $footer = $themes . $layouts . DIRECTORY_SEPARATOR . $footer;
 
         return $this->load->view($footer, $data, TRUE);
     }
@@ -363,8 +357,7 @@ class Core_Controller extends CI_Controller
         $header = config('config', 'theme_views_header');
         $headerView = trim($this->viewConf['header']);
         $header = isset($this->viewConf['header']) && ! empty($headerView) ? $this->viewConf['header'] : $header;
-        $header = $themes . $layouts . '/' . $header;
-
+        $header = $themes . $layouts . DIRECTORY_SEPARATOR. $header;
         return $this->load->view($header, $data, TRUE);
     }
 

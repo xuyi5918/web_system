@@ -41,10 +41,10 @@ function error_logs($level, $message, $filename, $line, $content)
  * @param $sign
  * @return Yar_Client
  */
-function rpc($model = NULL, $sign)
+function rpc($model, $sign)
 {
-    $model  = is_string($model) ? trim($model) : '';
-    $sign   = is_string($sign) ? trim($sign) : '';
+    $model  = trim($model);
+    $sign   = trim($sign);
 
     $CI = app();
     if(empty($model)) {
@@ -242,8 +242,8 @@ function themes($dir = NULL)
 {
     $dir = trim($dir);
     empty($dir) && exit('themes is dir null !');
-    $platform = config_item('platform');
-    $theme = $platform. $dir . DIRECTORY_SEPARATOR;
+    $project = config_item('project');
+    $theme = $project.DIRECTORY_SEPARATOR. $dir . DIRECTORY_SEPARATOR;
     return  $theme;
 }
 
@@ -302,7 +302,9 @@ function error($paramsArr, $tipPage = TRUE)
         }
 
 
-        if($tipPage === TRUE) {
+        $isAPI = config_item('project');
+
+        if($tipPage === TRUE && $isAPI !== 'api') {
             app()->displayTpl(array('message' => $message), CACHE_OUT_TIME_ONE_MINU, $error['tpl']);
             exit();
         }

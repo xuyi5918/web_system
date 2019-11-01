@@ -5,12 +5,15 @@ class Results
     private $result;
     public function __construct($paramsArr)
     {
-        if(isset($paramsArr['return_code']) && $paramsArr['return_code'] == 'error')
-        {
-            $error = array('method'=>isset($paramsArr['method']) ? $paramsArr['method'] : '', 'message'=>$paramsArr['message']);
-            app()->trace()->logs('rpc_request_error', $error); # 记录RPC错误
 
-            error(errorMsg(500, 'RPC Server Error !'));
+        if(isset($paramsArr['return_code']) && $paramsArr['return_code'] == 'error' && $paramsArr['err_code'] >= 5000)
+        {
+            $error = array(
+                'method'=>isset($paramsArr['method']) ? $paramsArr['method'] : '',
+                'message'=>$paramsArr['message']
+            );
+            app()->trace()->logs('rpc_request_error', $error); # 记录RPC错误
+            error(errorMsg(500, "RPC Server Error ({$paramsArr['err_code']})!"));
         }
 
         $this->result = $paramsArr;

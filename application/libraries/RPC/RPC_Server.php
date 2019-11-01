@@ -56,10 +56,12 @@ class RPC_Server{
         $class = trim($class);
 
         if(users_exists('class/'.$group, $class) === FALSE) {
-            error(errorMsg(404, 'RPC Server does not exist'), FALSE);
+           return errorMsg(5000, 'RPC Server does not exist');
         }
 
         $this->app = app()::classes($class, $group);
+
+        return successMsg('ok');
     }
 
     /**
@@ -94,13 +96,21 @@ class RPC_Server{
     public function exec()
     {
         # 加载路由
-        $this->router($this->group,$this->class);
+        $router = $this->router($this->group,$this->class);
+
+        if(! validate($router)) {
+            return $router;
+        }
 
         # 支持客户端连贯操作
         foreach ($this->methodArr as $item=>$method)
         {
 
             $paramsArr = empty($this->paramsArr[$method]) ? array() : $this->paramsArr[$method];
+            if(! method_exists($this->app, $method)) {
+                return errorMsg(5005, "RPC Server method {$method} does not exist");
+            }
+
             $this->app = call_user_func_array(array($this->app, $method), array_values($paramsArr));
         }
 

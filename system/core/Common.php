@@ -712,6 +712,7 @@ if ( ! function_exists('_shutdown_handler'))
 			_error_handler($last_error['type'], $last_error['message'], $last_error['file'], $last_error['line']);
 		}
 
+
         app()->trace()->displayTrace();
     }
 }

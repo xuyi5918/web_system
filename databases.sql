@@ -174,7 +174,8 @@ create table `users_info_001`(
   `users_status` tinyint(1) unsigned not null default 1 comment '1: normal, 2: deleted, 3: not audit',
   `virtual_coin` int(10) unsigned not null default 0 comment '用户虚拟币余额',
   `credit_num` int(10) unsigned not null default 0 comment '积分值',
-  `level_num` int(10) unsigned not null default 0 comment 'level num',
+  `level_exp` int(10) unsigned not null default 0 comment '当前用户经验值',
+  `level_id` int(3) unsigned not null default 0 comment 'level id',
   `recently_active` int(10) not null default 0 comment '最近活跃时间',
   `create_time` int(10) not null default 0 comment '创建时间',
   `update_time` int(10) not null default 0 comment '数据更新时间',
@@ -654,6 +655,7 @@ create table `area_info`(
   primary key (area_id)
 ) engine =innodb default charset =utf8 comment '';
 
+
 create table `credit_rules_info`(
   `rules_id` int(11) unsigned not null auto_increment,
   `rules_name` varchar(20) not null default '' comment '规则名称',
@@ -669,7 +671,36 @@ create table `credit_rules_info`(
   key rules_credit_type(rules_type, credit_type)
 ) engine = innodb default charset =utf8 comment 'credit rules 规则信息表';
 
+
+create table `basic_level_info`(
+  `level_id` int(10) unsigned not null auto_increment comment '主键ID',
+  `level_name` varchar(10) not null default '' comment '等级名称',
+  `level_exp_min` int(10) unsigned not null default 0 comment '当前等级所需最小经验',
+  `level_exp_max` int(10) unsigned not null default 0 comment '提升等级所需最大经验',
+  `create_time` int(10) unsigned not null default 0 comment '',
+  `update_time` int(10) unsigned not null default 0 comment '',
+  primary key (level_id),
+  unique key level_exp_min_max(level_exp_min, level_exp_max)
+) engine =innodb default charset =utf8 comment '等级基础信息配置(等级划分、等级特权配置)';
+
+
+create table `level_privilege_info`(
+  `privilege_id` int(10) unsigned not null auto_increment comment '主键',
+  ``
+) engine =innodb default charset =utf8 comment '等级特权配置';
+
+
 create table `level_rules_info`(
   `rules_id` int(11) unsigned not null auto_increment,
-  `rules`
-) engine = innodb default charset =utf8 comment 'credit rules 规则信息表';
+  `rules_name` varchar(20) not null default '' comment '规则名称',
+  `level_val` int(3) not null default 0 comment '经验值',
+  `rules_type` tinyint(1) unsigned not null default 1 comment '规则类型 1: comic, 2: novel, 3: music, 4: anime',
+  `level_type` varchar(9) not null default '' comment '积分类型 read, comments, like, fav',
+  `rules_cycle` int(2) not null default 0 comment '周期(天) 0: 一次性经验增加规则, 1 ~ 30 天',
+  `rules_status` tinyint(1) unsigned not null default '1' comment '1: normal, 2: deleted, 3: not audit',
+  `rules_json`  varchar(255) not null default '' comment '附加规则配置 {"read_id_arr":[], }',
+  `create_time` int(10) not null default 0 comment 'create_time',
+  `update_time` int(10) not null default 0 comment 'update_time',
+  primary key (rules_id),
+  key rules_level_type(rules_type, level_type)
+) engine = innodb default charset =utf8 comment 'level rules 规则信息表';
