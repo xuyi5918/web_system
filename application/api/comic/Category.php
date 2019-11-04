@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/10/13 10:24
  */
-class Category extends Core_Controller
+class Category extends Driver_Controller
 {
     public function __construct()
     {

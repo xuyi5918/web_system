@@ -4,13 +4,13 @@
  * author: 零上一度
  * date: 2019/6/2 20:08
  */
-class Comic extends Core_Controller
+class Comic extends Driver_Controller
 {
     public function __construct()
     {
         parent::__construct();
 
-//        $this->authorization();
+        $this->authorization();
     }
 
     /**

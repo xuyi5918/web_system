@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 02:21:06
  */
-class Users_comic_reply_info_model extends Core_Model
+class Users_comic_reply_info_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Users_comic_reply_info_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getUsersComicReplyInfoListByReplyIdArr
     * @param $replyIdArr
@@ -255,7 +255,7 @@ class Users_comic_reply_info_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveUsersComicReplyInfo
      * @param $replyId

@@ -1,6 +1,6 @@
 <?php
 
-class Core_Model extends  CI_Model
+class Driver_Model extends  CI_Model
 {
 
     public $table = '';

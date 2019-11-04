@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 02:20:38
  */
-class Users_comic_comment_info_model extends Core_Model
+class Users_comic_comment_info_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Users_comic_comment_info_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getUsersComicCommentInfoListByCommentIdArr
     * @param $commentIdArr
@@ -195,7 +195,7 @@ class Users_comic_comment_info_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveUsersComicCommentInfo
      * @param $commentId

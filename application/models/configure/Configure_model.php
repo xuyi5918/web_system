@@ -5,7 +5,7 @@
  * @version:    ${Id}
  * @Author:     零上一度 <xuyi5918@live.cn>
  */
-class Configure_model extends Core_Model
+class Configure_model extends Driver_Model
 {
     const Table_Site_Config = 'site_config';
     const Table_Site_Config_Group = 'site_config_group';

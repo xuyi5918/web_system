@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 11:43:15
  */
-class Music_extend_info_model extends Core_Model
+class Music_extend_info_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Music_extend_info_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getMusicExtendInfoListByExtendIdArr
     * @param $extendIdArr
@@ -135,7 +135,7 @@ class Music_extend_info_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveMusicExtendInfo
      * @param $extendId

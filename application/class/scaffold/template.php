@@ -5,7 +5,7 @@
  * @author xuyi
  * @date {@TIME@}
  */
-class {@MODEL_NAME@}_model extends Core_Model
+class {@MODEL_NAME@}_model extends Driver_Model
 {
     public function __construct()
     {

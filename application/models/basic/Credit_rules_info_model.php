@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-10-13 12:02:34
  */
-class Credit_rules_info_model extends Core_Model
+class Credit_rules_info_model extends Driver_Model
 {
     public function __construct()
     {

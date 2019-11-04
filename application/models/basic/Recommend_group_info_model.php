@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 06:37:53
  */
-class Recommend_group_info_model extends Core_Model
+class Recommend_group_info_model extends Driver_Model
 {
     public function __construct()
     {

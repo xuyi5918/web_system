@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/10/12 17:12
  */
-class Music extends Core_Controller
+class Music extends Driver_Controller
 {
     public function __construct()
     {

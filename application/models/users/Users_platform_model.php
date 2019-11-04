@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-21 09:34:05
  */
-class Users_platform_model extends Core_Model
+class Users_platform_model extends Driver_Model
 {
     public function __construct()
     {

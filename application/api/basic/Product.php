@@ -5,7 +5,7 @@
  * date: 2019/10/12 19:26
  */
 
-class Product extends Core_Controller
+class Product extends Driver_Controller
 {
     public function __construct()
     {

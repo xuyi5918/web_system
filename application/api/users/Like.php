@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/9/25 13:25
  */
-class Like extends Core_Controller
+class Like extends Driver_Controller
 {
     public function __construct()
     {

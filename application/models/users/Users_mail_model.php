@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-06 09:50:12
  */
-class Users_mail_model extends Core_Model
+class Users_mail_model extends Driver_Model
 {
     public function __construct()
     {
@@ -252,7 +252,7 @@ class Users_mail_model extends Core_Model
             if(! empty($usersId)) {
                 $update['users_id'] = $usersId;
             }
-            
+
             $this->db_master($default)->where(array('mail_id' => $mailId))->update($this->table, $update);
             $affectedRows = $this->db_master($default)->affected_rows();
             if(empty($affectedRows)) {

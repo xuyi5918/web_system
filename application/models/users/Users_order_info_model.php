@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 11:17:18
  */
-class Users_order_info_model extends Core_Model
+class Users_order_info_model extends Driver_Model
 {
     public function __construct()
     {

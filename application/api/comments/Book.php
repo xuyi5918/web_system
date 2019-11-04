@@ -5,7 +5,7 @@
  * date: 2019/9/26 12:52
  */
 
-class Book extends Core_Controller
+class Book extends Driver_Controller
 {
     public function __construct()
     {

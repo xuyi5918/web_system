@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/8/16 17:28
  */
-class Users extends Core_Controller
+class Users extends Driver_Controller
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 11:27:02
  */
-class Anime_info_model extends Core_Model
+class Anime_info_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Anime_info_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getAnimeInfoListByAnimeIdArr
     * @param $animeIdArr
@@ -135,7 +135,7 @@ class Anime_info_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveAnimeInfo
      * @param $animeId

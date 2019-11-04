@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 11:43:24
  */
-class Music_info_model extends Core_Model
+class Music_info_model extends Driver_Model
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 11:42:56
  */
-class Music_author_map_model extends Core_Model
+class Music_author_map_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Music_author_map_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getMusicAuthorMapListByMapIdArr
     * @param $mapIdArr
@@ -195,7 +195,7 @@ class Music_author_map_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveMusicAuthorMap
      * @param $mapId

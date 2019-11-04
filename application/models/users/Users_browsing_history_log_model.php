@@ -1,5 +1,5 @@
 <?php
-class Users_browsing_history_log_model extends Core_Model
+class Users_browsing_history_log_model extends Driver_Model
 {
     public function __construct()
     {

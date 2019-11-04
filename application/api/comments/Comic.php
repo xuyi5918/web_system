@@ -5,7 +5,7 @@
  * date: 2019/9/26 12:51
  */
 
-class Comic extends Core_Controller
+class Comic extends Driver_Controller
 {
     public function __construct()
     {

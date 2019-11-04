@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 11:41:57
  */
-class Music_album_model extends Core_Model
+class Music_album_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Music_album_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getMusicAlbumListByAlbumIdArr
     * @param $albumIdArr
@@ -135,7 +135,7 @@ class Music_album_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveMusicAlbum
      * @param $albumId

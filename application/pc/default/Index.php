@@ -6,7 +6,7 @@
  * Time: 18:10
  */
 
-class Index extends Core_Controller
+class Index extends Driver_Controller
 {
     public function __construct()
     {

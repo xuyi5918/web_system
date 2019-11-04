@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/10/12 17:01
  */
-class Article extends Core_Controller
+class Article extends Driver_Controller
 {
     public function __construct()
     {

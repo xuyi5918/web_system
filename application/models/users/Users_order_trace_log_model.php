@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-10-02 04:06:05
  */
-class Users_order_trace_log_model extends Core_Model
+class Users_order_trace_log_model extends Driver_Model
 {
     public function __construct()
     {

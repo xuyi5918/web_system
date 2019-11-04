@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 11:28:00
  */
-class Anime_extend_info_model extends Core_Model
+class Anime_extend_info_model extends Driver_Model
 {
     public function __construct()
     {

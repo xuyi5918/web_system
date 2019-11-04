@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/10/13 11:36
  */
-class Comic extends Core_Controller
+class Comic extends Driver_Controller
 {
     public function __construct()
     {

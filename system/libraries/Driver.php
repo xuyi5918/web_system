@@ -96,11 +96,14 @@ class CI_Driver_Library {
 		if ( ! isset($this->lib_name))
 		{
 			// Get library name without any prefix
-			$this->lib_name = str_replace(array('CI_', $prefix), '', get_class($this));
+			$this->lib_name = str_replace(array('CI_'), '', get_class($this));
 		}
+
+
 
 		// The child will be prefixed with the parent lib
 		$child_name = $this->lib_name.'_'.$child;
+
 
 		// See if requested child is a valid driver
 		if ( ! in_array($child, $this->valid_drivers))
@@ -115,9 +118,13 @@ class CI_Driver_Library {
 		$CI = get_instance();
 		$paths = $CI->load->get_package_paths(TRUE);
 
-		// Is there an extension?
+
+        // Is there an extension?
 		$class_name = $prefix.$child_name;
+
+
 		$found = class_exists($class_name, FALSE);
+
 		if ( ! $found)
 		{
 			// Check for subclass file
@@ -125,6 +132,8 @@ class CI_Driver_Library {
 			{
 				// Does the file exist?
 				$file = $path.'libraries/'.$this->lib_name.'/drivers/'.$prefix.$child_name.'.php';
+
+
 				if (file_exists($file))
 				{
 					// Yes - require base class from BASEPATH

@@ -1,5 +1,5 @@
 <?php
-class Comic_tag_info_model extends Core_Model
+class Comic_tag_info_model extends Driver_Model
 {
     public function __construct()
     {

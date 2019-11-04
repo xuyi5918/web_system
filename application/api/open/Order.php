@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/10/8 10:51
  */
-class Order extends Core_Controller
+class Order extends Driver_Controller
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-23 11:33:08
  */
-class Users_fav_comic_model extends Core_Model
+class Users_fav_comic_model extends Driver_Model
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-27 11:42:46
  */
-class Music_album_map_model extends Core_Model
+class Music_album_map_model extends Driver_Model
 {
     public function __construct()
     {

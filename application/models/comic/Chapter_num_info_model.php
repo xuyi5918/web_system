@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-10-07 13:18:56
  */
-class Chapter_num_info_model extends Core_Model
+class Chapter_num_info_model extends Driver_Model
 {
     public function __construct()
     {

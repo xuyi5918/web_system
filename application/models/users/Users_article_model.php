@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-06 10:08:57
  */
-class Users_article_model extends Core_Model
+class Users_article_model extends Driver_Model
 {
     public function __construct()
     {

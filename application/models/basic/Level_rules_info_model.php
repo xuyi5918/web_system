@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-11-01 02:02:36
  */
-class Level_rules_info_model extends Core_Model
+class Level_rules_info_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Level_rules_info_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getLevelRulesInfoListByRulesIdArr
     * @param $rulesIdArr
@@ -135,7 +135,7 @@ class Level_rules_info_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveLevelRulesInfo
      * @param $rulesId

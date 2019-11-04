@@ -1,5 +1,5 @@
 <?php
-class Core_Controller extends CI_Controller
+class Driver_Controller extends CI_Controller
 {
     public $uriString   = '';
     public $uriArray    = array();
@@ -15,7 +15,7 @@ class Core_Controller extends CI_Controller
     );
 
     /**
-     * Core_Controller constructor.
+     * Driver_Controller constructor.
      */
     public function __construct()
     {
@@ -127,8 +127,8 @@ class Core_Controller extends CI_Controller
 
         $this->load->library('CI_Rpc', FALSE, 'server');
 
-        $this->load->driver('Driver_xmlrpc');
-        $this->driver_xmlrpc->driver('client')->initialize($group, $class);
+//        $this->load->driver('Driver_xmlrpc');
+//        $this->driver_xmlrpc->driver('client')->initialize($group, $class);
 
         return $this->server->Model($modelNameString);
     }

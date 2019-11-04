@@ -4,7 +4,7 @@
  * author: 零上一度
  * date: 2019/6/13 22:45
  */
-class comic_extend_info_model extends Core_Model
+class comic_extend_info_model extends Driver_Model
 {
     public function __construct()
     {

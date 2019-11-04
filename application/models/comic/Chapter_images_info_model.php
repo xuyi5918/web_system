@@ -4,7 +4,7 @@
  * author: 零上一度
  * date: 2019/6/13 14:37
  */
-class Chapter_images_info_model extends Core_Model
+class Chapter_images_info_model extends Driver_Model
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 11:30:51
  */
-class Anime_tag_map_model extends Core_Model
+class Anime_tag_map_model extends Driver_Model
 {
     public function __construct()
     {

@@ -1,5 +1,5 @@
 <?php
-class Recommend_group_info_model extends Core_Model
+class Recommend_group_info_model extends Driver_Model
 {
     public function __construct()
     {

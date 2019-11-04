@@ -4,7 +4,7 @@
  * RPC Server Controller
  * Class Index
  */
-class RPC extends Core_Controller
+class RPC extends Driver_Controller
 {
     public function __construct()
     {

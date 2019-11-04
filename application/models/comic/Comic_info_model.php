@@ -4,7 +4,7 @@
  * author: 零上一度
  * date: 2019/6/5 10:33
  */
-class Comic_info_model extends Core_Model
+class Comic_info_model extends Driver_Model
 {
     public $table;
     public function __construct()

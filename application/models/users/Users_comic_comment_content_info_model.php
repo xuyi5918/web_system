@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 02:18:17
  */
-class Users_comic_comment_content_info_model extends Core_Model
+class Users_comic_comment_content_info_model extends Driver_Model
 {
     public function __construct()
     {

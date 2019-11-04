@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/7/18 13:18
  */
-class scaffold extends Core_Controller
+class scaffold extends Driver_Controller
 {
     public $scaffoldMap = array(
         'model' => 'create_model_class'

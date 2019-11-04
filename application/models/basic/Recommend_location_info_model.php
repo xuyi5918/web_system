@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-30 11:07:26
  */
-class Recommend_location_info_model extends Core_Model
+class Recommend_location_info_model extends Driver_Model
 {
     public function __construct()
     {

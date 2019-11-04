@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/9/30 16:53
  */
-class Recommend extends Core_Controller
+class Recommend extends Driver_Controller
 {
     public function __construct()
     {

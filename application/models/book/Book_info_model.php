@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-24 11:47:04
  */
-class Book_info_model extends Core_Model
+class Book_info_model extends Driver_Model
 {
     public function __construct()
     {

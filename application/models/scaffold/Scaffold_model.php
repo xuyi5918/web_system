@@ -4,7 +4,7 @@
  * author: xuyi
  * date: 2019/7/18 13:23
  */
-class Scaffold_model extends Core_Model
+class Scaffold_model extends Driver_Model
 {
     public function __construct()
     {

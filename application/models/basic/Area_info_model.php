@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-10-13 02:57:42
  */
-class Area_info_model extends Core_Model
+class Area_info_model extends Driver_Model
 {
     public function __construct()
     {

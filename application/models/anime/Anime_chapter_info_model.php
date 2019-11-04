@@ -5,7 +5,7 @@
  * @author xuyi
  * @date 2019-09-26 11:28:49
  */
-class Anime_chapter_info_model extends Core_Model
+class Anime_chapter_info_model extends Driver_Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Anime_chapter_info_model extends Core_Model
         $this->table = $this->getTable();
     }
 
-    
+
     /**
     * getAnimeChapterInfoListByAnimeChapterIdArr
     * @param $animeChapterIdArr
@@ -135,7 +135,7 @@ class Anime_chapter_info_model extends Core_Model
     }
 
 
-    
+
     /**
      * saveAnimeChapterInfo
      * @param $animeChapterId
