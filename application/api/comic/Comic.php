@@ -9,6 +9,8 @@ class Comic extends Core_Controller
     public function __construct()
     {
         parent::__construct();
+
+//        $this->authorization();
     }
 
     /**
@@ -51,7 +53,7 @@ class Comic extends Core_Controller
         {
             return $comic->getChapterListByComicId($comicId);
 
-        }, CACHE_OUT_TIME_ONE_HOUR);
+        }, CACHE_OUT_TIME_THIRTY_SECO);
     }
 
 

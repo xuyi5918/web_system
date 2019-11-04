@@ -1,12 +1,10 @@
 <?php
 class Core_Controller extends CI_Controller
 {
-    static $request     = NULL;
     public $uriString   = '';
     public $uriArray    = array();
 
     static $classs      = array();
-    static $traceLog    = NULL;
     static $di          = array();
 
     private $usersId    = 88;
@@ -23,11 +21,11 @@ class Core_Controller extends CI_Controller
     {
         parent::__construct();
 
-        static::$request = $this->input;
+        $this->di('input', $this->input);
 
         # 是否开启线上debug模式
-        $isDebug = self::get('is_debug', 0, 'boolval');
-        $this->isDebugRunLog($isDebug);
+        $this->di('is_debug', self::get('is_debug', 0, 'intval'));
+        $this->isDebugRunLog();
     }
 
     /**
@@ -38,17 +36,28 @@ class Core_Controller extends CI_Controller
      */
     public function authorization()
     {
-        $platform    = self::get('platform', 'pc', 'trim');
-        $requestTime = self::get('request_time', 0, 'intval');
-        $version     = self::get('version', '1.02', 'trim');
-        $sign        = self::get('sign', '', 'trim');
+        return true;
+        $platform    = self::get('platform', 'windows', 'trim');
 
-        $mimVersion  = '1.20'; # 最小可用版本
+        $requestTime = self::get('request_time', '', 'intval');
+        $version     = self::get('version', '', 'trim');
+        $signal      = self::get('signal', 0, 'trim');
 
         # 执行验证
         $validate = array(
-            ''
+            'request_time' => $requestTime,
+            'version'      => $version,
+            'uri'          => $this->urlPath()->uriString,
+            'signal'       => $signal
         );
+
+        $isDebug = self::make('is_debug');
+        if(boolval($isDebug) === TRUE) {
+            return successMsg('debug~');
+        }
+
+        $validate = array_merge($validate, $_GET);
+
         $this->load->driver('Driver_authorization');
         $result = $this->driver_authorization->drive($platform)->validate($validate)->exec();
         if($this->driver_authorization->authorization === FALSE) {
@@ -64,13 +73,14 @@ class Core_Controller extends CI_Controller
      * @author xuyi
      * @date 2019/10/31
      */
-    public function isDebugRunLog($isDebug = TRUE)
+    public function isDebugRunLog()
     {
-        if($isDebug == TRUE) {
+        $isDebug = self::make('is_debug');
+        if($isDebug == TRUE && $this->usersId == 88) {
            $this->output->enable_profiler(1);
         }
 
-        self::$traceLog  = self::classes('TRACE_info', 'drive'); # 页面运行信息&错误记录
+        $this->di('track_info', self::classes('TRACE_info', 'drive')); # 页面运行信息&错误记录
     }
 
     /**
@@ -99,14 +109,6 @@ class Core_Controller extends CI_Controller
     }
 
     /**
-     * @return array|null|object
-     */
-    public function trace()
-    {
-        return self::$traceLog;
-    }
-
-    /**
      * RPC function , callback Server model
      * @param null $group | model group dir
      * @param null $model | model file name
@@ -124,6 +126,9 @@ class Core_Controller extends CI_Controller
         $modelNameString = $group .'/'. $class;
 
         $this->load->library('CI_Rpc', FALSE, 'server');
+
+        $this->load->driver('Driver_xmlrpc');
+        $this->driver_xmlrpc->driver('client')->initialize($group, $class);
 
         return $this->server->Model($modelNameString);
     }
@@ -179,7 +184,7 @@ class Core_Controller extends CI_Controller
      */
     public static function post($name = NULL, $default = NULL, $filter = 'htmlspecialchars')
     {
-        $value = static::$request->post($name, TRUE);
+        $value = self::make('input')->post($name, TRUE);
         if(empty($value)) {
             $value = $default;
         }
@@ -197,7 +202,7 @@ class Core_Controller extends CI_Controller
      */
     public static function get($name = NULL, $default = NULL, $filter = 'htmlspecialchars')
     {
-        $value = static::$request->get($name, TRUE);
+        $value = self::make('input')->get($name, TRUE);
         if(empty($value)) {
             $value = $default;
         }
@@ -294,6 +299,7 @@ class Core_Controller extends CI_Controller
 
         // 支持JSONP
         $JSONP = ! isset($paramArr['get']['callback']) ? '' : trim($paramArr['get']['callback']) | $paramArr['get']['callback'] = '';
+
 
         if(! is_array($param) && is_object($param))
         {
@@ -414,9 +420,9 @@ class Core_Controller extends CI_Controller
             return TRUE;
         }
 
-        echo $this->header($themes, $layouts);
+        echo $this->header($themes, $layouts, $param);
         echo $this->load->view($tpl, $param, TRUE);
-        echo $this->footer($themes, $layouts);
+        echo $this->footer($themes, $layouts, $param);
 
         return TRUE;
     }
@@ -424,7 +430,7 @@ class Core_Controller extends CI_Controller
     /**
      * get exec controller 、 dir 、 file name
      *
-     * @return $this
+     * @return object
      */
     public function urlPath()
     {
@@ -484,7 +490,7 @@ class Core_Controller extends CI_Controller
      * @param string $name
      * @return array
      */
-    public function make($name = '')
+    public static function make($name = '')
     {
         $name = trim($name);
 
@@ -494,5 +500,13 @@ class Core_Controller extends CI_Controller
         }
 
         return array();
+    }
+
+    /**
+     * @return array|null|object
+     */
+    public function trace()
+    {
+        return $this->make('track_info');
     }
 }

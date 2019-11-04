@@ -38,8 +38,8 @@ class Driver_authorization extends CI_Driver_Library
      */
     public function validate($validate = array())
     {
-
-       return $this;
+        $this->{$this->drive}->validate($validate);
+        return $this;
     }
 
     /**
@@ -51,7 +51,7 @@ class Driver_authorization extends CI_Driver_Library
     public function exec()
     {
         $result = $this->{$this->drive}->exec();
-        $this->authorization = TRUE;
+        $this->authorization = $this->{$this->drive}->authorization;
 
         return $result;
     }

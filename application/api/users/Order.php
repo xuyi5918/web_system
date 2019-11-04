@@ -10,7 +10,7 @@ class Order extends Core_Controller
     {
         parent::__construct();
 
-
+        $this->authorization();
     }
 
     /**

@@ -6,14 +6,16 @@ class Results
     public function __construct($paramsArr)
     {
 
-        if(isset($paramsArr['return_code']) && $paramsArr['return_code'] == 'error' && $paramsArr['err_code'] >= 5000)
+        if(empty($paramsArr) || isset($paramsArr['return_code']) && $paramsArr['return_code'] == 'error' && $paramsArr['err_code'] >= 5000)
         {
             $error = array(
                 'method'=>isset($paramsArr['method']) ? $paramsArr['method'] : '',
                 'message'=>$paramsArr['message']
             );
+
+            $err_code = $paramsArr['err_code'] ? $paramsArr['err_code'] : '0000'; # 0000 RPC 服务不可用
             app()->trace()->logs('rpc_request_error', $error); # 记录RPC错误
-            error(errorMsg(500, "RPC Server Error ({$paramsArr['err_code']})!"));
+            error(errorMsg(500, "RPC Server Error ({$err_code})!"));
         }
 
         $this->result = $paramsArr;

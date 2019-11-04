@@ -269,12 +269,14 @@ class comic_info_class
 
         # 检测用户是否已经购买
         $paymentAllow = array();
+        $currChapterAllow = array();
         if(! empty($usersId) && $isPayment === TRUE)
         {
             $isReadChapter = $this->load->server('comic_order_class', 'order', SITE_USERS); # RPC 远端服务
             $paymentAllow  = $isReadChapter->isComicReadPaymentAllow($usersId, $comicId, $chapterId)->result('result');
 
-            $currChapterAllow = in_array($chapterId, $paymentAllow['users_pay_chapter']);
+            $usersPayChapter  = empty($paymentAllow['users_pay_chapter']) ? array() : $paymentAllow['users_pay_chapter'];
+            $currChapterAllow = in_array($chapterId, $usersPayChapter);
         }
 
         # 其他情况的阅读权限验证

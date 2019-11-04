@@ -9,6 +9,8 @@ class RPC extends Core_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->authorization();
     }
 
     /**
@@ -20,10 +22,11 @@ class RPC extends Core_Controller
     {
         if(self::isPost())
         {
-            $this->load->library('CI_Server', array(), 'RPC');
-            $request = self::post('request');
+            $stream = self::post('request', '', 'trim');
 
-            $result = $this->RPC->request($request)->exec();
+            $this->load->driver('Driver_xmlrpc');
+            $this->driver_xmlrpc->driver('server')->initialize($initialize = array());
+            $result = $this->driver_xmlrpc->request_stream($stream)->exec();
 
             $result = isset($result['return_code']) ? $result : successMsg('RPC Request success!', $result);
             $this->displayJson($result);

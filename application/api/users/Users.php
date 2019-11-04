@@ -9,6 +9,8 @@ class Users extends Core_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->authorization();
     }
 
     /**
@@ -48,6 +50,7 @@ class Users extends Core_Controller
         $username      = self::post('username', '13525044817', 'trim');
         $usersPassword = self::post('users_password', 'xuyi134', 'trim');
         $usersNickname = self::post('users_nickname', '徐熠', 'trim');
+        $isPlatform = self::post('is_platform', 0, 'boolval');
 
         $r = errorMsg(500, 'request method post');
 

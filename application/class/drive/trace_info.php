@@ -36,7 +36,7 @@ class TRACE_info
     {
         if($this->debug)
         {
-            echo  json_encode($this->attrArr);
+            dump($this->attrArr);
         }
 
 

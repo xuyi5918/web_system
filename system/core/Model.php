@@ -78,12 +78,22 @@ class CI_Model
 		return get_instance()->$key;
 	}
 
-    public function mongo_slave()
+	public function elastics_slave()
     {
 
     }
 
-	public function mongo_master()
+    public function elastics_master()
+    {
+
+    }
+    
+    public function mongo_slave($mongoName)
+    {
+
+    }
+
+	public function mongo_master($mongoName)
     {
 
     }

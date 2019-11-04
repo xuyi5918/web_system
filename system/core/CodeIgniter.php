@@ -363,10 +363,7 @@ if ( ! is_php('5.4'))
 
         $requested = empty($_SERVER['HTTP_X_REQUESTED_API']) ? '' : trim($_SERVER['HTTP_X_REQUESTED_API']);
 
-
         $requestedType = array(
-            'pc',
-            'mobile',
             'rpc',
             'api'
         );
@@ -379,7 +376,6 @@ if ( ! is_php('5.4'))
             $CFG->set_item('project', $controller_dir);
             return $controller_dir . DIRECTORY_SEPARATOR;
         }
-
 
         # 域名/浏览器标识 判断验证
         $httpHost = empty($_SERVER['HTTP_HOST']) ? '' : $_SERVER['HTTP_HOST'];

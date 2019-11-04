@@ -23,11 +23,12 @@
             "site_mode"       : 'pc',                           // 网站页面当前运行模式 PC / Mobile
             "request_type"    : 'json',                         // 接口请求数据方式 JSON
             "recommend_page"  : '<?php echo empty($result['recommend_page']) ? '' : $result['recommend_page'];?>'
-
-
         };
 
         // 推介位置配置
         var recommend = <?php echo json_encode($result); ?>;
 
+
     </script>
+
+

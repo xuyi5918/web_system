@@ -1,8 +1,10 @@
     <link rel="stylesheet" href="<?php echo staticUrl('src/css/reset.css');?>">
     <link rel="stylesheet" href="<?php echo staticUrl('src/css/index.css');?>">
     <link rel="stylesheet" href="<?php echo staticUrl('src/font/iconfont.css')?>">
+
     <script type="text/javascript" src="<?php echo staticUrl('build/template.js')?>"></script>
     <script type="text/javascript" src="<?php echo staticUrl('src/js/extension/helpers.js');?>"></script>
+
 </head>
 <body style="height: 2000px;">
 
